@@ -1,18 +1,18 @@
 // Imports
 const router = require("express").Router();
-const { BlogPost } = require("../../models");
+const { post } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// Route to create new post
+// Route for new post
 router.post("/", withAuth, async (req, res) => {
   console.log(req.body);
   try {
-    const newBlogPost = await BlogPost.create({
+    const newpost = await post.create({
       ...req.body,
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newBlogPost);
+    res.status(200).json(newpost);
   } catch (err) {
     console.log(err)
     res.status(400).json(err);
@@ -23,18 +23,18 @@ router.post("/", withAuth, async (req, res) => {
 router.put("/:id", withAuth, async (req, res) => {
   console.log(req.body);
   try {
-    const blogPostData = await BlogPost.update(req.body, {
+    const postData = await post.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
 
-    if (!blogPostData) {
+    if (!postData) {
       res.status(404).json({ message: "No blog post found with this id!" });
       return;
     }
 
-    res.status(200).json(blogPostData);
+    res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -44,18 +44,18 @@ router.put("/:id", withAuth, async (req, res) => {
 router.delete("/:id", withAuth, async (req, res) => {
   console.log(req.params.id);
   try {
-    const blogPostData = await BlogPost.destroy({
+    const postData = await post.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!blogPostData) {
+    if (!postData) {
       res.status(404).json({ message: "No blog post found with this id!" });
       return;
     }
 
-    res.status(200).json(blogPostData);
+    res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
   }

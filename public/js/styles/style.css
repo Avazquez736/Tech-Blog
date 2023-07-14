@@ -1,0 +1,36 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+a {
+    text-decoration: none;
+    color: black
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    color: white;
+    background-color: red;
+    margin: 1rem;
+}
+nav a{
+    color: white;
+    font-size: 2rem;
+}
+.container{
+    background-color: green;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    border:black;
+    margin: 0% 5%;
+    
+}
+.card{
+    display: flex;   
+    align-items: center;
+    flex-direction: column;
+    background-color: yellow;
+    margin: 5rem;
+    padding: 2rem;
+}

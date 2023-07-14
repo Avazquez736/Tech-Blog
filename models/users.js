@@ -9,15 +9,15 @@ const { Model, DataTypes } = require("sequelize");
 
  Users.init(
    {
+     name: {
+       type: DataTypes.STRING,
+       allowNull: false,
+     },
      id: {
        type: DataTypes.INTEGER,
        allowNull: false,
        primaryKey: true,
        autoIncrement: true,
-     },
-     name: {
-       type: DataTypes.STRING,
-       allowNull: false,
      },
      email: {
        type: DataTypes.STRING,
@@ -50,8 +50,8 @@ const { Model, DataTypes } = require("sequelize");
        },
      },
      sequelize,
-     timestamps: false,
      freezeTableName: true,
+     timestamps: false,
      underscored: true,
      modelName: "users",
    }
